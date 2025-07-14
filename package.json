@@ -1,0 +1,26 @@
+{
+  "name": "bhutan-oil-distribution-",
+  "version": "1.0.0",
+  "description": "Intern Project",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tandin-Dorji-ikigai/Bhutan-Oil-Distribution-.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tandin-Dorji-ikigai/Bhutan-Oil-Distribution-/issues"
+  },
+  "homepage": "https://github.com/Tandin-Dorji-ikigai/Bhutan-Oil-Distribution-#readme",
+  "dependencies": {
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "mongodb": "^6.17.0",
+    "mongoose": "^8.16.3"
+  }
+}
