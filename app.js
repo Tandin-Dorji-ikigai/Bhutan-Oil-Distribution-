@@ -10,6 +10,7 @@ import driverRoutes from "./routes/driverRoutes.js";
 import fuelEntryRoutes from "./routes/fuelEntryRoutes.js";
 import fuelTransactionRoutes from "./routes/fuelTransactionRoutes.js";
 import fuelPumpAttendantRoutes from "./routes/fuelPumpAttendantRoutes.js";
+import fuelbookRoutes from "./routes/fuelbookRoutes.js";
 import cors from "cors";
 
 dotenv.config();
@@ -34,5 +35,6 @@ app.use("/api/driver", driverRoutes);
 app.use("/api/fuel-entry", fuelEntryRoutes);
 app.use("/api/fuel-transactions", fuelTransactionRoutes);
 app.use("/api/attendant", fuelPumpAttendantRoutes);
+app.use("/api/fuelbook", fuelbookRoutes);
 
 export default app;
