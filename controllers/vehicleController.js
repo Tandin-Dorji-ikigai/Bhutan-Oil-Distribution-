@@ -33,6 +33,23 @@ export const getAllVehicles = async (req, res) => {
   }
 };
 
+
+// Read - Get vehicle by vehicle number
+export const getVehicleByNumber = async (req, res) => {
+  try {
+    const { vehicleNumber } = req.params;
+    const vehicle = await Vehicle.findOne({ vehicleNumber }).populate("company");
+
+    if (!vehicle) {
+      return res.status(404).json({ message: "Vehicle not found" });
+    }
+
+    res.status(200).json(vehicle);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 // Read - Get vehicle by ID
 export const getVehicleById = async (req, res) => {
   try {
