@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
 const fuelBookSchema = new mongoose.Schema({
-    vehicle: { type: mongoose.Schema.Types.ObjectId, ref: "Vehicle" }, // Optional if type is Shared
-    company: { type: mongoose.Schema.Types.ObjectId, ref: "Company" }, // Optional if type is Individual
+    vehicle: { type: mongoose.Schema.Types.ObjectId, ref: "Vehicle" }, 
+    company: { type: mongoose.Schema.Types.ObjectId, ref: "Company" },
     type: { type: String, enum: ["Shared", "Individual"], required: true },
     currentBalance: { type: Number, default: 0 },
     thresholdLimit: { type: Number, default: 0 },

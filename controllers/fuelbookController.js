@@ -2,12 +2,31 @@ import FuelBook from "../models/fuelBookModel.js";
 import Vehicle from "../models/vehicleModel.js";
 import Company from "../models/companyModel.js";
 
+export const getFuelBookForVehicle = async (vehicleNumber) => {
+    const vehicle = await Vehicle.findOne({ vehicleNumber }).populate("company");
+
+    if (!vehicle) throw new Error("Vehicle not found");
+
+    let fuelBook;
+
+    if (vehicle.fuelBookType === "Individual") {
+        // fuelBook is stored in vehicle document
+        fuelBook = await FuelBook.findOne({ vehicle: vehicle._id, status: "Active" });
+    } else if (vehicle.fuelBookType === "Shared") {
+        // fuelBook is shared at company level
+        fuelBook = await FuelBook.findOne({ company: vehicle.company._id, type: "Shared", status: "Active" });
+    }
+
+    return { vehicle, fuelBook };
+};
+
+
+
 // Create Fuel Book
 export const createFuelBook = async (req, res) => {
     try {
         const { type, vehicle, company, currentBalance = 0, thresholdLimit = 0 } = req.body;
 
-        // Validation for type
         if (type === "Shared" && !company) {
             return res.status(400).json({ message: "Company is required for shared fuel book" });
         }
@@ -24,11 +43,18 @@ export const createFuelBook = async (req, res) => {
         });
 
         await fuelBook.save();
+
+        // 🔗 Link fuelBook to Vehicle if type is Individual
+        if (type === "Individual") {
+            await Vehicle.findByIdAndUpdate(vehicle, { fuelBook: fuelBook._id });
+        }
+
         res.status(201).json(fuelBook);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 };
+
 
 // Get All Fuel Books (with vehicle.company populated)
 export const getAllFuelBooks = async (req, res) => {

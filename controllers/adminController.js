@@ -19,6 +19,7 @@ export const registerAdmin = async (req, res) => {
   }
 };
 
+
 export const loginAdmin = async (req, res) => {
   try {
     const { email, password } = req.body;

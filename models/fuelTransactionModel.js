@@ -5,6 +5,7 @@ const fuelTransactionSchema = new mongoose.Schema({
     fuelPumpAttendant: { type: mongoose.Schema.Types.ObjectId, ref: "FuelPumpAttendant" },
     litersDispensed: Number,
     amount: Number,
+    vehicleNo: { type: String, required: true },
     timestamp: { type: Date, default: Date.now }
 });
 

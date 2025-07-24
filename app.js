@@ -7,10 +7,10 @@ import adminRoutes from "./routes/adminRoutes.js";
 import companyRoutes from "./routes/companyRoutes.js";
 import vehicleRoutes from "./routes/vehicleRoutes.js";
 import driverRoutes from "./routes/driverRoutes.js";
-import fuelEntryRoutes from "./routes/fuelEntryRoutes.js";
 import fuelTransactionRoutes from "./routes/fuelTransactionRoutes.js";
 import fuelPumpAttendantRoutes from "./routes/fuelPumpAttendantRoutes.js";
 import fuelbookRoutes from "./routes/fuelbookRoutes.js";
+import thresholdAlertRoutes from "./routes/thresholdAlertRoutes.js";
 import cors from "cors";
 
 dotenv.config();
@@ -32,9 +32,9 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/company", companyRoutes);
 app.use("/api/vehicle", vehicleRoutes);
 app.use("/api/driver", driverRoutes);
-app.use("/api/fuel-entry", fuelEntryRoutes);
 app.use("/api/fuel-transactions", fuelTransactionRoutes);
 app.use("/api/attendant", fuelPumpAttendantRoutes);
 app.use("/api/fuelbook", fuelbookRoutes);
+app.use("/api/threshold", thresholdAlertRoutes); 
 
 export default app;

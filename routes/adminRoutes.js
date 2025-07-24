@@ -9,10 +9,13 @@ import {
     getCurrentAdmin
 } from "../controllers/adminController.js";
 
+import { getAdminNotifications } from "../controllers/notificationController.js";
+
 const router = express.Router();
 
 router.get("/", getAllAdmins);
 router.get("/me", getCurrentAdmin);
+router.get("/notifications", getAdminNotifications);
 router.get("/:id", getAdminById);
 router.put("/:id", updateAdmin);
 router.delete("/:id", deleteAdmin);
